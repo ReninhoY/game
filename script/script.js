@@ -10,6 +10,10 @@ const dataAtual = {
     'mes': (date.getMonth())+1,
     'ano': date.getFullYear()
 }
+const meses = {
+    '30dias': [4,6,9,11],
+    '31dias': [1,3,5,7,8,10,12]
+}
 //==============================================================
 
 // Funções
@@ -33,7 +37,7 @@ function justLetters(evento,tecla) {
 // Eventos
 
     // Nome
-    nome.addEventListener('keypress',(evento)=>{
+    nome.addEventListener('keydown',(evento)=>{
         justLetters(evento,evento.key)
         if (evento.key == " ") {
             evento.preventDefault()
@@ -41,12 +45,12 @@ function justLetters(evento,tecla) {
     })
 
     // Sobrenome
-    sobrenome.addEventListener('keypress',(evento)=>{
+    sobrenome.addEventListener('keydown',(evento)=>{
         justLetters(evento,evento.key)
     })
 
     // CPF - Máscara
-    cpf.addEventListener('keypress',(evento)=>{
+    cpf.addEventListener('keydown',(evento)=>{
         let cpfQuantidade = cpf.value.length
 
         justNumbers(evento,evento.key)
@@ -61,7 +65,7 @@ function justLetters(evento,tecla) {
     })
 
     // Data de Nascimento - Máscara
-    dataNascimento.addEventListener('keypress',()=>{
+    dataNascimento.addEventListener('keydown',()=>{
         
         let quantidadeDataNascimento = dataNascimento.value.length
        
@@ -71,13 +75,16 @@ function justLetters(evento,tecla) {
     })
 
     // Data de Nascimento - Ajustar Data Digitada
-    dataNascimento.addEventListener('keypress',(evento)=>{
+    dataNascimento.addEventListener('keydown',(evento)=>{
         justNumbers(evento,evento.key)
         var partes = dataNascimento.value.split("/")
         var dia = partes[0]
         var mes = partes[1]
-      
-        if (dataNascimento.value.length == 3 && dia > 31) { 
+      //if (dataNascimento.value.length == 3 && dia > 31) { 
+        if (dataNascimento.value.length == 3) { 
+            meses.Adias.forEach((a,index)=>{
+                console.log("33333")
+            })
             dataNascimento.value = "31/"
         }   
 
