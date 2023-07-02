@@ -4,16 +4,25 @@ var nome = document.querySelectorAll('.input-send1')[0]
 var sobrenome = document.querySelectorAll('.input-send1')[1]
 var cpf = document.querySelectorAll('.input-send1')[2]
 var dataNascimento = document.querySelectorAll('.input-send1')[3]
+let cardNome = document.querySelectorAll('.card-info-digitada')[0]
+let cardSobrenome = document.querySelectorAll('.card-info-digitada')[1]
+let cardCPF = document.querySelectorAll('.card-info-digitada')[2]
+let cardDataNascimento = document.querySelectorAll('.card-info-digitada')[3]
+
 let date = new Date
 const dataAtual = {
     'dia': date.getDate(),
     'mes': (date.getMonth())+1,
     'ano': date.getFullYear()
 }
-const meses = {
-    '30dias': [4,6,9,11],
-    '31dias': [1,3,5,7,8,10,12]
-}
+let mes30dias = [4,6,9,11]
+let mes31dias = [1,3,5,7,8,10,12]
+
+const caracteresEspeciais = [
+    "!", "\"", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@",
+    "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~", "¨"
+];
+      
 //==============================================================
 
 // Funções
@@ -21,39 +30,72 @@ function erroInputInvalido(erro) {
     console.log("Input Inválido. Corrija "+erro)
 }
 
-function justNumbers(evento,tecla) {   
-    if (tecla != 0 && tecla != 1 && tecla != 2 && tecla != 3 && tecla != 4 && tecla != 5 && tecla != 6 && tecla != 7 && tecla != 8 && tecla != 9 ){
+function justNumbers(evento, tecla) {   
+    if ((tecla != '0' && tecla != '1' && tecla != '2' && tecla != '3' && tecla != '4' && tecla != '5' && tecla != '6' && tecla != '7' && tecla != '8' && tecla != '9' && tecla != "backspace") || (tecla == " ")){       
         evento.preventDefault();
     }
 }
 
-function justLetters(evento,tecla) {   
-    if (tecla == 0 || tecla == 1 || tecla == 2 || tecla == 3 || tecla == 4 || tecla == 5 || tecla == 6 || tecla == 7 || tecla == 8 || tecla == 9 ){
+function justLetters(evento, tecla) {   
+    if (tecla == '0' || tecla == '1' || tecla == '2' || tecla == '3' || tecla == '4' || tecla == '5' || tecla == '6' || tecla == '7' || tecla == '8' || tecla == '9' ){
         evento.preventDefault();
     }
 }
+
+function éCaracterEspecial(evento, tecla) {
+    caracteresEspeciais.forEach((a,index)=>{
+        if (tecla == caracteresEspeciais[index]) {
+            evento.preventDefault()
+        }
+    })
+}
+
+function éCaracterEspecialColado(evento) {
+    let valorCopiado = evento.clipboardData.getData("text/plain")
+    caracteresEspeciais.forEach((a,index)=>{
+        if (valorCopiado == caracteresEspeciais[index]) {
+            evento.preventDefault()
+        }
+    })
+}
+
+function éLetraColada(evento) {
+    let tecla = evento.key
+    let valorCopiado = evento.clipboardData.getData('text/plain')
+    if ((tecla != '0' && tecla != '1' && tecla != '2' && tecla != '3' && tecla != '4' && tecla != '5' && tecla != '6' && tecla != '7' && tecla != '8' && tecla != '9' && tecla != "backspace") || (tecla == " ")){
+        evento.preventDefault()        
+    }
+}
+
 
 
 // Eventos
 
     // Nome
-    nome.addEventListener('keydown',(evento)=>{
+    nome.addEventListener('keypress',(evento)=>{
+        éCaracterEspecial(evento,evento.key)
         justLetters(evento,evento.key)
         if (evento.key == " ") {
             evento.preventDefault()
         }
     })
+    nome.addEventListener('paste', (evento)=>{
+        éCaracterEspecialColado(evento)
+    })
 
     // Sobrenome
-    sobrenome.addEventListener('keydown',(evento)=>{
+    sobrenome.addEventListener('keypress',(evento)=>{
+        éCaracterEspecial(evento,evento.key)
         justLetters(evento,evento.key)
+    })
+    sobrenome.addEventListener('paste',(evento)=>{
+        éCaracterEspecialColado(evento)
     })
 
     // CPF - Máscara
-    cpf.addEventListener('keydown',(evento)=>{
-        let cpfQuantidade = cpf.value.length
-
+    cpf.addEventListener('keypress',(evento)=>{
         justNumbers(evento,evento.key)
+        let cpfQuantidade = cpf.value.length
 
         if (cpfQuantidade==3 || cpfQuantidade==7)  {
             cpf.value += "."
@@ -64,8 +106,13 @@ function justLetters(evento,tecla) {
         }
     })
 
+    cpf.addEventListener('paste',(evento)=>{
+        éCaracterEspecialColado(evento)
+        éLetraColada(evento)
+    })
+
     // Data de Nascimento - Máscara
-    dataNascimento.addEventListener('keydown',()=>{
+    dataNascimento.addEventListener('keypress',(evento)=>{
         
         let quantidadeDataNascimento = dataNascimento.value.length
        
@@ -75,35 +122,46 @@ function justLetters(evento,tecla) {
     })
 
     // Data de Nascimento - Ajustar Data Digitada
-    dataNascimento.addEventListener('keydown',(evento)=>{
+    dataNascimento.addEventListener('keypress',(evento)=>{
         justNumbers(evento,evento.key)
         var partes = dataNascimento.value.split("/")
         var dia = partes[0]
         var mes = partes[1]
       //if (dataNascimento.value.length == 3 && dia > 31) { 
-        if (dataNascimento.value.length == 3) { 
-            meses.Adias.forEach((a,index)=>{
-                console.log("33333")
-            })
+        if (dataNascimento.value.length == 3 && dia > 31) { 
+           
             dataNascimento.value = "31/"
-        }   
-
-        if (dataNascimento.value.length == 3 && dia < 1) {
-            dataNascimento.value = "01/"
         }
+        // Se falhar o bloqueio a caracteres especiais
+        else if (dataNascimento.value.length == 3 && dia < 1) {
+            dataNascimento.value = "01/"
+        }        
 
-        if (dataNascimento.value.length > 5 && mes < 1) {
+        if (dataNascimento.value.length == 5 && mes < 1) {
             dataNascimento.value = `${dia}/01/`
         }
 
-        if (mes == 2 && dia>29) {
-            dia == 28
-            dataNascimento.value = `${dia}/${mes}`
+        if (dataNascimento.value.length == 6 && mes == 2 && dia>29) {
+            dia = 28
+            dataNascimento.value = `${dia}/${mes}/`
         }
+
+       mes30dias.forEach((a,index)=>{
+        // Se é um mês com 30 dias e o usuário digitar 31
+        if (dataNascimento.value.length == 6 && mes30dias[index] == mes && dia>30) {
+            dia = 30
+            dataNascimento.value = `${dia}/${mes}/`
+        }
+       })
         
-        if (mes > 12) {
+        if (mes > 12 && dataNascimento.value.length == 6) {
             dataNascimento.value = `${dia}/12/`
         }
+    })
+
+    dataNascimento.addEventListener('paste',(evento)=>{
+        éCaracterEspecialColado(evento)
+        éLetraColada(evento)
     })
 
     // Data de Nascimento - Ajustar Ano Digitado
@@ -113,11 +171,11 @@ function justLetters(evento,tecla) {
         let dia = partes[0]
         let mes = partes[1]
 
-        if (ano>dataAtual.ano && mes<dataAtual.mes) {
-            dataNascimento.value = `${dia}/${mes}/${dataAtual.ano}`
+        if (ano>=dataAtual.ano && mes>dataAtual.mes) {
+            dataNascimento.value = `${dia}/${mes}/${(dataAtual.ano)-1}`
         }
-        else if (ano>dataAtual.ano && mes>dataAtual.mes){
-            ano = dataAtual.ano-1
+        else if (ano>=dataAtual.ano && mes<=dataAtual.mes){
+            ano = dataAtual.ano
             dataNascimento.value = `${dia}/${mes}/${ano}`
         }
 
@@ -131,6 +189,9 @@ function justLetters(evento,tecla) {
         if (dia==29 && mes==2 && ano != 0 && ano%4!=0) {
             dataNascimento.value = `28/02/${ano}`
         }
+
+        cardDataNascimento.innerHTML = dataNascimento.value
+
     })
 
 
@@ -143,18 +204,28 @@ function justLetters(evento,tecla) {
         a.placeholder=""
     })
 
-    
 
 
 // Card ==========================================================================================
 
-let cardNome = document.querySelectorAll('.card-info-digitada')[0]
 
 nome.oninput= ()=>{
     cardNome.innerHTML = (nome.value).toUpperCase()
 }
 
-nome.addEventListener('keydown',(evento)=>{
+sobrenome.oninput = ()=>{
+    cardSobrenome.innerHTML = (sobrenome.value).toUpperCase()
+}
+
+cpf.oninput = ()=>{
+    cardCPF.innerHTML = (cpf.value).toUpperCase()
+}
+
+dataNascimento.oninput = ()=>{
+    cardDataNascimento.innerHTML = (dataNascimento.value).toUpperCase()
+}
+
+nome.addEventListener('keypress',(evento)=>{
     if (evento.key == " " || isNaN(evento.key)) { // PAREI AQUI ==================================================================
         
     }
@@ -185,5 +256,3 @@ campos.forEach((a,index)=>{
         }
     })
 })
-
-// Lembrar de incluir o LABELCLICK no recebimento de classes, já que ao clicar nela o input entra em FOCUS também.
