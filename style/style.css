@@ -287,3 +287,11 @@ texto1 {
     }
 
 }
+
+
+@media screen and (max-width: 480px){ 
+    texto1 {
+        font-size: 2em;
+    }
+
+}
