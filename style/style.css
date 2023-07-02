@@ -11,7 +11,7 @@ html,body {
 }
 
 p {
-    font-size: max(1vw,10px);
+    font-size: 0.8em;
     
 }
 
@@ -28,7 +28,7 @@ texto1 {
     color: #000000;
     font-family: 'Poppins', sans-serif;
     font-weight: 900;
-    font-size: 3.8vw;
+    font-size: 3.2em;
 }
 
 .btn {
@@ -36,6 +36,7 @@ texto1 {
     outline: 0;
     padding: 3% 5%;
     background-color: #1F1F1F;
+    font-size: 1em;
     color: #ffffff;
     border-radius: 18px;
     cursor: pointer;
@@ -233,15 +234,17 @@ texto1 {
 
 /* Layout Mobile */
 
-@media screen and (max-width: 480px){
+@media screen and (max-width: 980px){
 
     html,body {
         overflow-y: scroll;
     }
 
     texto1 {
-        font-size: 5vh;
+        margin-top: 5%;
     }
+
+
 
     /* Parte 2: Formulário Dados Pessoais */
     #content-container #content-1 .content-div:nth-child(2) .container p {
@@ -271,11 +274,6 @@ texto1 {
         margin: 3% 0;
     }
 
-    .content-div:nth-child(2) #form-dadosPessoais input[type="submit"] {
-        border-radius: 9px;
-        width: 42%;
-        height: 8vh;
-    }
 
     .content-div:nth-child(2) #form-dadosPessoais #possuiConta {
         display: block;
