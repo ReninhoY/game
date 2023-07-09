@@ -19,10 +19,9 @@
         <div id="content-1" class="content">
 
             <!-- Parte 1 -->
-            <div class="content-div">   
+            <div class="content-div" id="j">   
                 <!-- Card -->
                 <div id="card-container">
-                    <!-- Card -->
                     <div class="card">
                         <!-- Ícone Usuário -->
                         <img src="img/icon-user.png" alt="" class="icon-user icon-campo-vazio">
@@ -30,28 +29,29 @@
                         <!-- Container - Informações Digitadas -->
                         <div id="card-info-container">
                             <div id="container-nome">
-                                <p class="card-info-digitada nome">FDSFSD</p>
-                                <p class="card-info-digitada nome">FDSFSD</p>
+                                <p class="card-info-digitada nome"></p>
+                                <p class="card-info-digitada nome"></p>
                             </div>
-                            <p class="card-info-digitada">4893274893</p>
-                            <p class="card-info-digitada">43/43/42342</p>
+                            <p class="card-info-digitada"></p>
+                            <p class="card-info-digitada"</p>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Parte 2 -->
-            <div class="content-div">
+            <div class="content-div aside-dinamic-form">
                 <div class="container">
-                <!-- Texto 1 -->
-                <div id="texto">
+                <!-- Textos -->
+                <div id="text-container1">
+                    <!-- Texto 1 -->
                     <texto1>Crie a sua conta</texto1>
+                    <!-- Descrição -->
+                    <p>Crie uma conta agora e desfrute de uma experiência personalizada. Bem-vindo a nomecomérciol!
+                    <span>Já possui conta? <a href="#">Faça login aqui</a>.</span></p> 
                 </div>
-                <!-- Descrição -->
-                <p>Crie uma conta agora e desfrute de uma experiência personalizada. Bem-vindo a nomecomérciol!
-                <span>Já possui conta? <a href="#">Faça login aqui</a>.</span></p> 
                 <!-- Formulário -->
-                <form action="" method="" id="form-dadosPessoais">
+                <form action="" method="" id="form-dadosPessoais" class="form">
 
                     <!-- Nome -->
                     <div class="form-group">
@@ -76,24 +76,95 @@
                         <input type="text" name="aniversario" id="aniversario" class="input-send1" maxlength="10" required>
                         <label for="aniversario" class="form-dadosPessoais-label">Data de Nascimento</label>
                     </div>
-
-                    <!-- Enviar -->
-                    <input type="submit" value="Continuar" class="btn" id="send1">
-
-                    <!-- Link termos -->
-                    <p id="termos">Ao clicar em continuar, você concorda com os <a href="#">termos de uso e serviço</a>.</p>
-
-                    <!-- Já possui conta? -->
-                    <p id="possuiConta">Já possui conta? <a href="#">Faça login aqui</a>.</p>
                 </form>
+
+                <!-- Enviar -->
+                <button class="btn" id="send1">Continuar</button>
+
+                <!-- Link termos -->
+                <p id="termos">Ao clicar em continuar, você concorda com os <a href="#">termos de uso e serviço</a>.</p>
+
+                <!-- Já possui conta? -->
+                <p id="possuiConta">Já possui conta? <a href="#">Faça login aqui</a>.</p>
+                
             </div>
             </div>
 
         </div>
 
         <!-- Criar conta: credenciais -->
-        <div id="content-2" class="content">
+        <div id="content-2" class="content aside-dinamic-form esconder">
+            <div class="content-div">
+                <div class="container">
+                <div class="back-button-container">
+                    <img src="img/back-button.png" alt="" class="back-button">
+                </div>
+                <!-- Texto 1 -->
+                <div id="texto2">
+                    <texto1>Agora informe suas credenciais</texto1>
+                </div>
+                <!-- Formulário -->
+                <form action="" method="" id="form-dadosPessoais" class="form">
 
+                    <!-- Email -->
+                    <div class="form-group">
+                        <input type="text" name="email" id="email" class="input-send2" required>
+                        <label for="email">Email</label>
+                    </div>
+
+                    <!-- Senha -->
+                    <div id="form-group-password">
+                        <div class="form-group">
+                            <input type="text" name="senha" id="senha" class="input-send2" required>
+                            <label for="senha">Senha</label>
+                        </div>
+
+
+                        <!-- Confirmar Senha -->
+                        <div class="form-group" id="confirmarSenhaContainer">
+                            <input type="text" name="confirmarSenha" id="confirmarSenha" class="input-send2" required>
+                            <label for="confirmarSenha">Confirme sua senha</label>
+                        </div>
+                </div>
+                <div id="requirements-align">
+                    <div class="form-group h-0" id="requirements-container">
+                        <ul>
+                            <p>A senha deve conter:</p>
+                            <!-- Deve Conter Letra Maiúscula -->
+                            <li class="requirements">
+                                <img src="img/wrong-icon.png" alt="" class="check-passsword-icon">
+                                Ao menos 1 letra maiúscula
+                            </li>
+                            <!-- Deve Conter Letra Minúscula -->
+                            <li class="requirements">
+                                <img src="img/wrong-icon.png" alt="" class="check-passsword-icon">
+                                Ao menos 1 letra minúscula
+                            </li>
+                            <!-- Deve Conter Caractere Especial -->
+                            <li class="requirements">
+                                <img src="img/wrong-icon.png" alt="" class="check-passsword-icon">
+                                Ao menos 1 caractere especial
+                            </li>
+                            <!-- Deve Conter Números -->
+                            <li class="requirements">
+                                <img src="img/wrong-icon.png" alt="" class="check-passsword-icon">
+                                Ao menos 1 número
+                            </li>
+                            <!-- Deve Conter >= 8 dígitos -->
+                            <li class="requirements">
+                                <img src="img/wrong-icon.png" alt="" class="check-passsword-icon">
+                                Ao menos 8 digitos
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                </form>
+                <!-- Enviar -->
+                <button class="btn" id="send2">Continuar</button>
+            </div>
+            </div>
+
+        </div>
         </div>
         <!-- Criar conta: verificar -->
         <div id="content-3" class="content">
