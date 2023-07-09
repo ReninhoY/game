@@ -1,13 +1,35 @@
 // Variáveis
 var send1 = document.getElementById('send1')
+let send2 = document.getElementById('send2')
+let backButton1 = document.querySelectorAll('.back-button')[0]
 var nome = document.querySelectorAll('.input-send1')[0]
 var sobrenome = document.querySelectorAll('.input-send1')[1]
 var cpf = document.querySelectorAll('.input-send1')[2]
 var dataNascimento = document.querySelectorAll('.input-send1')[3]
+let senha = document.querySelectorAll(".input-send2 ")[1]
+let cardContainer = document.querySelectorAll(".content-div")[0]
 let cardNome = document.querySelectorAll('.card-info-digitada')[0]
 let cardSobrenome = document.querySelectorAll('.card-info-digitada')[1]
 let cardCPF = document.querySelectorAll('.card-info-digitada')[2]
 let cardDataNascimento = document.querySelectorAll('.card-info-digitada')[3]
+let content1 = document.querySelectorAll(".aside-dinamic-form")[0]
+let content2 = document.querySelectorAll(".aside-dinamic-form")[1]
+let requisitosSenha = document.querySelector("#requirements-container")
+let senhaLetraMaiuscula = false
+let senhaLetraMinuscula = false
+let senhaCaractereEspecial = false
+let senhaNumero = false
+let senha8Digitos = false
+
+/*
+Ao menos 1 letra maiúscula
+Ao menos 1 letra minúscula
+Ao menos 1 caractere especial
+Ao menos 1 número
+Ao menos 8 digitos
+
+*/
+
 
 let date = new Date
 const dataAtual = {
@@ -66,8 +88,6 @@ function éLetraColada(evento) {
         evento.preventDefault()        
     }
 }
-
-
 
 // Eventos
 
@@ -225,11 +245,6 @@ dataNascimento.oninput = ()=>{
     cardDataNascimento.innerHTML = (dataNascimento.value).toUpperCase()
 }
 
-nome.addEventListener('keypress',(evento)=>{
-    if (evento.key == " " || isNaN(evento.key)) { // PAREI AQUI ==================================================================
-        
-    }
-})
 
 var iconUser = document.querySelectorAll(".icon-user")
 
@@ -244,15 +259,28 @@ labels.forEach((a,index)=>{
     })
 })
 
-campos.forEach((a,index)=>{
-    campos[index].addEventListener('focus',()=>{
-        iconUser[0].classList.remove("icon-campo-focusout")
-    })
-    campos[index].addEventListener('focusout',()=>{
-        if (nome.value == "" && dataNascimento.value == "" && cpf.value == "" && sobrenome.value == "") {
-            setTimeout(()=>{
-                iconUser[0].classList.add("icon-campo-focusout")
-            },1000)
-        }
-    })
+
+send1.addEventListener('click',()=>{
+    content1.classList.add("esconder")
+    content2.classList.remove("esconder")
+    cardContainer.classList.add("esconder")
 })
+
+backButton1.addEventListener('click',()=>{
+    content1.classList.remove("esconder")
+    content2.classList.add("esconder")
+    cardContainer.classList.remove("esconder")
+})
+
+// Eventos para o 2º Formulário: Credenciais
+
+senha.oninput = (evento)=>{
+    let tecla = evento.key
+    
+    if (!isNaN(parseInt(tecla))) {
+        alert("é num")
+    }
+    else {
+        alert ("não é num")
+    }
+}
