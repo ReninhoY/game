@@ -34,7 +34,7 @@ texto1 {
 .btn {
     border: 0;
     outline: 0;
-    padding: 3% 5%;
+    padding: 2.3% 5%;
     background-color: #1F1F1F;
     font-size: 1em;
     color: #ffffff;
@@ -56,14 +56,17 @@ texto1 {
 #content-container #content-1 {
     width: 100%;
     height: 100%;
-    background-color: red;
     display: flex;
 }
 
-#content-container #content-1 .content-div {
+#content-container #content-1 .aside-dinamic-form {
     width: 65%;
-    height: 100%;
     background-color: rgb(255, 255, 255);
+    position: absolute;
+    height: 90%;
+    right: 0;
+    top: 10%;
+    z-index: 1;
 }
 
 /* Parte 1: Card*/
@@ -122,6 +125,17 @@ texto1 {
     display: inline-block;
 }
 
+#text-container1 {
+    width: 100%;
+    text-align: center;
+}
+
+#text-container1 p {
+    width: 50%;
+    margin: 0 auto;
+    text-align: left;
+}
+
 /*==========================================================================================================*/
 
 /* Parte 2: cadastrar dados pessoais */
@@ -140,15 +154,7 @@ texto1 {
     width: 80%;
 }
 
-#content-container #content-1 .content-div:nth-child(2) {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 5vh;
-}
-
-#form-dadosPessoais {
+.form {
     width: 70%;
     display: flex;
     justify-content: center;
@@ -158,7 +164,7 @@ texto1 {
     
 }
 
-#form-dadosPessoais p, #form-dadosPessoais a {
+.form p, .form a {
     width: 100%;
 }
 
@@ -167,14 +173,7 @@ texto1 {
     display: inline !important;
 }
 
-.content-div:nth-child(2) {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.content-div:nth-child(2) .form-group {
+.aside-dinamic-form .form-group {
     display: flex;
     justify-content: center;
     align-items: start;
@@ -184,7 +183,7 @@ texto1 {
     width: 100%;
 }
 
-.content-div:nth-child(2) .form-group input {
+.aside-dinamic-form .form-group input {
     width: 100%;
     
     height: 5vh;
@@ -193,7 +192,7 @@ texto1 {
     font-size: 1vw;
 }
 
-.content-div:nth-child(2) .form-group label {
+.aside-dinamic-form .form-group label {
     cursor: text;
     width: 100%;
     color: #1F1F1F;
@@ -209,36 +208,137 @@ texto1 {
     font-size: 2vh;
 }
 
-.content-div:nth-child(2) .form-group input:focus {
+.aside-dinamic-form .form-group input:focus {
     border: 0;
     outline: 0;
     border-bottom: 1px solid black;
 }
 
-.content-div:nth-child(2) .form-group input:focus ~ label {
+.aside-dinamic-form .form-group input:focus ~ label {
     position: absolute;
     top: -45%;
     color: #000000;
     font-size: 2vh;
 }
 
-.content-div:nth-child(2) .form-group input:valid ~ label {
+.aside-dinamic-form .form-group input:valid ~ label {
     top: -45%;
     color: #000000;
     font-size: 2vh;
 }
 
-.content-div:nth-child(2) #form-dadosPessoais #possuiConta {
+.aside-dinamic-form #form-dadosPessoais #possuiConta {
     display: none;
 }
+
+/* Cadastro: parte das credenciais */
+#content-2{
+    overflow-x: hidden;
+    width: 65%;
+    position: absolute;
+    right: 0;
+    top: 10%;
+    z-index: 0;
+    width: 100%;
+}
+
+#content-2 .container {
+    
+}
+
+#content-2 .container texto1 {
+    text-align: center;
+}
+
+#content-2 #form-dadosPessoais .form-group {
+    gap: 8%;
+    justify-content: start;
+    align-items: start;
+}
+
+#content-2 #form-dadosPessoais #form-group-password {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 2%;
+}
+
+#content-2 #form-dadosPessoais {
+    
+}
+
+.back-button-container {
+    margin: 2% 0 0 5%;
+    width: 100%;
+}
+
+#texto2 texto1 {
+    
+}
+
+.back-button {
+    cursor: pointer;
+    width: 4%;
+}
+
+.esconder {
+   display: none !important;
+   background-color: aqua !important;
+}
+
+#requirements-align {
+    width: 100%;
+}
+
+#requirements-container {
+    transition: 2s linear;
+}
+
+#confirmarSenhaContainer {
+    margin-top: -5%;
+}
+
+.confirmarSenhaContainerBaixo {
+    margin-top: 0;
+}
+
+#requirements-align, #send2 {
+    margin-bottom: 4vh;
+}
+
+
+
+
+#requirements-container ul{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+}
+
+.requirements {
+    display: flex;
+    gap: 1vw;
+    align-items: center;
+}
+
+.check-passsword-icon {
+    width: 6%;
+}
+
+
+/* layout PC */
+
+@media screen and (min-width:1280px) {
+    
+}
+
+
 
 /* Layout Mobile */
 
 @media screen and (max-width: 980px){
-
-    html,body {
-        overflow-y: scroll;
-    }
 
     texto1 {
         margin-top: 5%;
@@ -256,19 +356,25 @@ texto1 {
         text-align: center;
     }
     
-    #content-container #content-1 .content-div {
+    #content-container #content-1 .content-div, #content-2 {
         width: 100%;
     }
 
-    #content-container #content-1 .content-div:first-child {
-        display: none;
+    #content-2 .form{
+        width: 95%;
     }
+
+    #content-2 #form-dadosPessoais #form-group-password {
+        flex-direction: column;
+        gap: 9vh;
+    }
+
 
     .content-div:nth-child(2) .form-group input {
         font-size: 2.5vh;
     }
 
-    .content-div:nth-child(2) #form-dadosPessoais {
+    .content-div:nth-child(2) .form {
         position: relative;
         width: 90%;
         margin: 3% 0;
@@ -282,12 +388,11 @@ texto1 {
         top: 110%;
     }
 
-    .content-div:nth-child(2) span {
+    .content-div :nth-child(2) span, #card-container {
         display: none;
     }
 
 }
-
 
 @media screen and (max-width: 480px){ 
     texto1 {
