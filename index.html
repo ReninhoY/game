@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Document</title>
-    
     <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
@@ -19,14 +18,15 @@
         <div id="content-1" class="content">
 
             <!-- Parte 1 -->
-            <div class="content-div" id="j">   
+            <div class="content-div">   
                 <!-- Card -->
                 <div id="card-container">
-                    <div class="card">
-                        <!-- Ícone Usuário -->
+                    <!-- Ícone Usuário -->
+                    <div id="icon-user-container">
                         <img src="img/icon-user.png" alt="" class="icon-user icon-campo-vazio">
-                        
-                        <!-- Container - Informações Digitadas -->
+                    </div>
+                     <!-- Container - Informações Digitadas -->
+                    <div class="card">
                         <div id="card-info-container">
                             <div id="container-nome">
                                 <p class="card-info-digitada nome"></p>
@@ -159,11 +159,13 @@
                     </div>
                 </div>
                 </form>
-                <!-- Enviar -->
-                <button class="btn" id="send2">Continuar</button>
+                <!-- Container do Botão -->
+                <div id="send2-container">
+                    <!-- Enviar -->
+                    <button class="btn" id="send2">Continuar</button>
+                </div>
             </div>
             </div>
-
         </div>
         </div>
         <!-- Criar conta: verificar -->
@@ -179,6 +181,6 @@
 
         </div>
     </main>
-    <script src="script/script.js"></script>
+    <script src="script/main.js"></script>
 </body>
 </html>
