@@ -14,12 +14,14 @@ let cardCPF = document.querySelectorAll('.card-info-digitada')[2]
 let cardDataNascimento = document.querySelectorAll('.card-info-digitada')[3]
 let content1 = document.querySelectorAll(".aside-dinamic-form")[0]
 let content2 = document.querySelectorAll(".aside-dinamic-form")[1]
+
 let requisitosSenha = document.querySelector("#requirements-container")
-let senhaLetraMaiuscula = false
-let senhaLetraMinuscula = false
-let senhaCaractereEspecial = false
-let senhaNumero = false
-let senha8Digitos = false
+let numeros = ['1','2','3','4','5','6','7','8','9']
+let requisitosSenhaMaiuscula = document.querySelectorAll('.check-passsword-icon')[0]
+let requisitosSenhaMinuscula = document.querySelectorAll('.check-passsword-icon')[1]
+let requisitosSenhaCaractereEspecial = document.querySelectorAll('.check-passsword-icon')[2]
+let requisitosSenhaNumero = document.querySelectorAll('.check-passsword-icon')[3]
+let requisitosSenha8Digitos = document.querySelectorAll('.check-passsword-icon')[4]
 
 /*
 Ao menos 1 letra maiúscula
@@ -86,6 +88,54 @@ function éLetraColada(evento) {
     let valorCopiado = evento.clipboardData.getData('text/plain')
     if ((tecla != '0' && tecla != '1' && tecla != '2' && tecla != '3' && tecla != '4' && tecla != '5' && tecla != '6' && tecla != '7' && tecla != '8' && tecla != '9' && tecla != "backspace") || (tecla == " ")){
         evento.preventDefault()        
+    }
+}
+
+function checkChange(senha) {
+    let requisitosSenhaMaiusculaCheck = /[A-Z]+/
+    let requisitosSenhaMinusculaCheck = /[a-z]+/
+    let requisitosSenhaCaractereEspecialCheck = /[!@#$%^&*()\-=_+[\]{};':"\\|,.<>/?]+/
+    let requisitosSenhaNumeroCheck = /[0-9]+/
+    let requisitosSenha8DigitosCheck = /^.{8,}$/
+    
+    // Verificar se tem 8 dígitos
+    if (requisitosSenha8DigitosCheck.test(senha) == true) {
+        requisitosSenha8Digitos.src = "../img/right.svg"
+    }
+    else {
+        requisitosSenha8Digitos.src = "../img/wrong.svg"
+    }
+
+    // Verificar se tem letra maiúscula
+    if (requisitosSenhaMaiusculaCheck.test(senha) == true) {
+        requisitosSenhaMaiuscula.src = "../img/right.svg"
+    }
+    else {
+        requisitosSenhaMaiuscula.src = "../img/wrong.svg"
+    }
+
+    // Verificar se tem letra minúscula
+    if (requisitosSenhaMinusculaCheck.test(senha) == true) {
+        requisitosSenhaMinuscula.src = "../img/right.svg"
+    }
+    else {
+        requisitosSenhaMinuscula.src = "../img/wrong.svg"
+    }
+
+    // Verificar se tem caractere especial
+    if (requisitosSenhaCaractereEspecialCheck.test(senha) == true) {
+        requisitosSenhaCaractereEspecial.src = "../img/right.svg"
+    }
+    else {
+        requisitosSenhaCaractereEspecial.src = "../img/wrong.svg"
+    }
+
+    // Verificar se tem número
+    if (requisitosSenhaNumeroCheck.test(senha) == true) {
+        requisitosSenhaNumero.src = "../img/right.svg"
+    }
+    else {
+        requisitosSenhaNumero.src = "../img/wrong.svg"
     }
 }
 
@@ -237,14 +287,6 @@ sobrenome.oninput = ()=>{
     cardSobrenome.innerHTML = (sobrenome.value).toUpperCase()
 }
 
-cpf.oninput = ()=>{
-    cardCPF.innerHTML = (cpf.value).toUpperCase()
-}
-
-dataNascimento.oninput = ()=>{
-    cardDataNascimento.innerHTML = (dataNascimento.value).toUpperCase()
-}
-
 
 var iconUser = document.querySelectorAll(".icon-user")
 
@@ -276,11 +318,6 @@ backButton1.addEventListener('click',()=>{
 
 senha.oninput = (evento)=>{
     let tecla = evento.key
-    
-    if (!isNaN(parseInt(tecla))) {
-        alert("é num")
-    }
-    else {
-        alert ("não é num")
-    }
+    console.log (""+senha.value)
+    checkChange(senha.value)
 }
