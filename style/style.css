@@ -20,7 +20,7 @@ texto2 {
     color: #000000;
     font-family: 'Poppins', sans-serif;
     font-weight: 900;
-    font-size: 2.8vw;
+    font-size: 3.2vw;
 }
 
 texto1 {
@@ -38,7 +38,7 @@ texto1 {
     background-color: #1F1F1F;
     font-size: 1em;
     color: #ffffff;
-    border-radius: 18px;
+    border-radius: 2vw;
     cursor: pointer;
 }
 
@@ -96,7 +96,10 @@ texto1 {
     align-items: center;
     flex-direction: column;
     position: relative;
-    
+}
+
+#content-container #content-1 .content-div:first-child #card-container #icon-user-container {
+
 }
 
 #content-container #content-1 .content-div:first-child #card-container .icon-user {
@@ -119,6 +122,7 @@ texto1 {
 
 #content-container #content-1 .content-div:first-child #card-container #card-info-container .card-info-digitada {
     height: 3vh;
+    word-break: break-all;
 }
 
 #content-container #content-1 .content-div:first-child #card-container #card-info-container #container-nome .nome{
@@ -126,7 +130,6 @@ texto1 {
 }
 
 #text-container1 {
-    width: 100%;
     text-align: center;
 }
 
@@ -145,7 +148,6 @@ texto1 {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 100%;
     width: 100%;
     gap: 4vh;
 }
@@ -240,10 +242,29 @@ texto1 {
     top: 10%;
     z-index: 0;
     width: 100%;
+    height: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-#content-2 .container {
-    
+#content-2 .content-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+#content-2 .content-div .container {
+    display: flex;
+    padding: 3%;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: visible;
 }
 
 #content-2 .container texto1 {
@@ -269,22 +290,26 @@ texto1 {
 }
 
 .back-button-container {
-    margin: 2% 0 0 5%;
+    margin: 2vw 2vw 0vw 2vw;
     width: 100%;
-}
-
-#texto2 texto1 {
-    
+    position: absolute;
+    top: 5%;
+    left: 5%;
 }
 
 .back-button {
     cursor: pointer;
     width: 4%;
+    min-width: 40px;
 }
 
 .esconder {
    display: none !important;
    background-color: aqua !important;
+}
+
+#send2 {
+    width: 50vw;
 }
 
 #requirements-align {
@@ -303,13 +328,6 @@ texto1 {
     margin-top: 0;
 }
 
-#requirements-align, #send2 {
-    margin-bottom: 4vh;
-}
-
-
-
-
 #requirements-container ul{
     list-style: none;
     display: flex;
@@ -327,14 +345,170 @@ texto1 {
     width: 6%;
 }
 
+.input-send2 {
+    font-size: 0.9em !important;
+}
 
-/* layout PC */
+/* Página de Verificação de Email */
 
-@media screen and (min-width:1280px) {
-    
+#verify-main-content-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5vh;
+}
+
+#text-container3 {
+    text-align: center;
+    margin-top: 2vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5vh;
+    width: 100%;
+}
+
+#text-container3 p {
+    width: 50%;
+}
+
+#send3 {
+    margin: 20vh 0 2vh 0;
+    padding: 2vw 5vw;
+}
+
+#container-figure {
+    width: 20vw;
+    height: 20vw;
+    background-color: #1f1f1f;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+#figure-border {
+    width: 16.75vw;
+    height: 16.75vw;
+    border-radius: 50%;
+    border: 0.536vw solid #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    transform: rotate(-10deg);
+    animation: preserveFigure linear 6s infinite;
+}
+
+#figure-content-space {
+    width: 10.72vw;
+    height: 8.71vw;
+    border-radius: 1.675vw;
+    background-color: #fff;
+    position: relative;
+}
+
+#figure-design-bar {
+    width: 100%;
+}
+
+#figure-design-bar-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 3.819vw;
+    position: absolute;
+    top: 5%;
+}
+
+.figure-design-retangle {
+    width: 0.536vw;
+    height: 5.36vw;
+    background-color: #1f1f1f;
+    position: relative;
+}
+
+.figure-design-bar:first-child {
+    transform: rotate(-60deg);
+}
+
+.figure-design-bar:last-child {
+    transform: rotate(60deg);
+}
+
+.figure-design-circle {
+    width: 0.536vw;
+    height: 0.536vw;
+    border-radius: 50%;
+    background-color: #1f1f1f;
+    position: absolute;
+    top: 0;
+    transform: translateY(-50%);
+}
+
+#handle-container {
+    width: 6.67vw;
+    height: 2vw;
+    background-color: chartreuse;
+    position: absolute;
+    right: 0;
+    bottom: 5vw;
+    transform: rotate(-151deg) translateX(-120%);
+}
+
+#handle-container .figure-design-retangle {
+    background-color: #1f1f1f;
+    width: 10.05vw;
+    height: 2vw;
+}
+
+#container-figure {
+    transform: rotate(10deg);
+    animation: rotateHandle linear 6s infinite;
+}
+
+#handle-container .figure-design-circle {
+    background-color: #1f1f1f;
+    width: 2vw;
+    height: 2vw;
+    left: 0;
+    transform: translateX(-50%);
 }
 
 
+
+@keyframes rotateHandle {
+    0% {
+       transform: rotate(10deg);
+    }
+    
+    50% {
+        transform: rotate(110deg);
+    }
+
+    100% {
+        transform: rotate(10deg);
+    }
+}
+
+@keyframes preserveFigure {
+    0% {
+        transform: rotate(-10deg);
+     }
+     
+     50% {
+         transform: rotate(-110deg);
+     }
+ 
+     100% {
+         transform: rotate(-10deg);
+     }
+}
+
+/* ================ Media Queries ================ */
 
 /* Layout Mobile */
 
@@ -343,8 +517,6 @@ texto1 {
     texto1 {
         margin-top: 5%;
     }
-
-
 
     /* Parte 2: Formulário Dados Pessoais */
     #content-container #content-1 .content-div:nth-child(2) .container p {
@@ -366,7 +538,7 @@ texto1 {
 
     #content-2 #form-dadosPessoais #form-group-password {
         flex-direction: column;
-        gap: 9vh;
+        gap: 9vw;
     }
 
 
@@ -374,7 +546,7 @@ texto1 {
         font-size: 2.5vh;
     }
 
-    .content-div:nth-child(2) .form {
+    .form {
         position: relative;
         width: 90%;
         margin: 3% 0;
@@ -392,6 +564,9 @@ texto1 {
         display: none;
     }
 
+    #send3 {
+        margin-top: 12vh;
+    }
 }
 
 @media screen and (max-width: 480px){ 
@@ -399,4 +574,76 @@ texto1 {
         font-size: 2em;
     }
 
+    .btn {
+        padding: 2.5vw 8vw !important;
+    }
+
+    #content-2 #form-dadosPessoais {
+        gap: 4vh;
+    }
+    
+    #content-2 #form-dadosPessoais #confirmarSenhaContainer {
+        margin-top: -1vh;
+    }
+
+}
+
+@media all and (max-width: 700px) {
+
+    #text-container3 p {
+        width: 75%;
+    }
+
+    #container-figure {
+        width: 32vw;
+        height: 32vw;
+    }
+    
+    #figure-border {
+        width: 26.8vw;
+        height: 26.8vw;
+        border: 0.858vw solid #fff;
+    }
+    
+    #figure-content-space {
+        width: 17.15vw;
+        height: 13.95vw;
+        border-radius: 2.68vw;
+    }
+    
+    #figure-design-bar {
+        width: 100%;
+    }
+    
+    #figure-design-bar-container {
+        gap: 6.11vw;
+    }
+    
+    .figure-design-retangle {
+        width: 0.858vw;
+        height: 8.576vw;
+    }
+
+    
+    .figure-design-circle {
+        width: 0.858vw;
+        height: 0.858vw;
+    }
+    
+    #handle-container {
+        width: 10.672vw;
+        height: 3.2vw;
+        bottom: 8vw;
+    }
+    
+    #handle-container .figure-design-retangle {
+        width: 16.08vw;
+        height: 3.2vw;
+    }
+    
+    #handle-container .figure-design-circle {
+        width: 3.2vw;
+        height: 3.2vw;
+    }
+    
 }
