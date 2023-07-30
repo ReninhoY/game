@@ -43,7 +43,7 @@
             <div class="content-div aside-dinamic-form">
                 <div class="container">
                 <!-- Textos -->
-                <div id="text-container1">
+                <div class="text-container">
                     <!-- Texto 1 -->
                     <texto1>Crie a sua conta</texto1>
                     <!-- Descrição -->
@@ -61,7 +61,7 @@
 
                     <!-- Sobrenome -->
                     <div class="form-group">
-                        <input type="text" name="sobrenome" id="sobrenome" class="input-send1" required autocapitalize="sentences">
+                        <input type="text" name="sobrenome" id="sobrenome" class="input-send1" required autocapitalize="sentences" maxlength="39">
                         <label for="sobrenome" class="form-dadosPessoais-label">Sobrenome</label>
                     </div>
 
@@ -77,7 +77,13 @@
                         <label for="aniversario" class="form-dadosPessoais-label">Data de Nascimento</label>
                     </div>
                 </form>
-
+                <!-- Aviso de erro  -->
+                <div class="error-container" id="error-container1">
+                    <error>
+                        <img src="img/info-alert.svg" alt="">
+                        Por favor, preencha todos os campos corretamente para prosseguir.
+                    </error>
+                </div>
                 <!-- Enviar -->
                 <button class="btn" id="send1">Continuar</button>
 
@@ -110,6 +116,13 @@
                     <div class="form-group">
                         <input type="text" name="email" id="email" class="input-send2" required>
                         <label for="email">Email</label>
+                        <!-- Overlay de alinhamento -->
+                        <div id="error-container-overlay">
+                            <error>
+                                <img src="img/info-alert.svg" alt="">
+                                  
+                            </error>
+                        </div>
                     </div>
 
                     <!-- Senha -->
@@ -117,48 +130,88 @@
                         <div class="form-group">
                             <input type="text" name="senha" id="senha" class="input-send2" required>
                             <label for="senha">Senha</label>
+
+                        <!-- Aviso de erro na senha -->
+                        <div class="password-error-container" id="senhas-invalidas-column-1">
+                            <error>
+                                <img src="img/info-alert.svg" alt="">
+                                A senha não cumpre todos os requisitos
+                            </error>
                         </div>
 
+                        </div>
 
                         <!-- Confirmar Senha -->
                         <div class="form-group" id="confirmarSenhaContainer">
                             <input type="text" name="confirmarSenha" id="confirmarSenha" class="input-send2" required>
                             <label for="confirmarSenha">Confirme sua senha</label>
+                             <!-- Aviso de senhas diferentes  -->
+                            <div class="password-error-container" id="senhas-invalidas-column-2">
+                                <error>
+                                    <img src="img/info-alert.svg" alt="">
+                                    As senhas não coincidem
+                                </error>
+                            </div>
                         </div>
-                </div>
+                        
+                    </div>
+
+                    <!-- Avisos nas senhas para quando a tela (PC) é larga e o layout está em linha -->
+                    <section id="senhas-invalidas-row">
+                    <!-- Aviso de erro na senha -->
+                    <div class="error-container-row" id="senhas-invalidas-row-1">
+                        <error>
+                            <img src="img/info-alert.svg" alt="">
+                            A senha não cumpre todos os requisitos
+                        </error>
+                    </div>
+                    <!-- Aviso de senhas  -->
+                    <div class="error-container-row" id="senhas-invalidas-row-2">
+                        <error>
+                            <img src="img/info-alert.svg" alt="">
+                            As senhas não coincidem
+                        </error>
+                    </div>
+                </section>
                 <div id="requirements-align">
                     <div class="form-group h-0" id="requirements-container">
                         <ul>
                             <p>A senha deve conter:</p>
                             <!-- Deve Conter Letra Maiúscula -->
                             <li class="requirements">
-                                <img src="img/wrong-icon.png" alt="" class="check-passsword-icon">
+                                <img src="img/wrong.svg" alt="" class="check-passsword-icon">
                                 Ao menos 1 letra maiúscula
                             </li>
                             <!-- Deve Conter Letra Minúscula -->
                             <li class="requirements">
-                                <img src="img/wrong-icon.png" alt="" class="check-passsword-icon">
+                                <img src="img/wrong.svg" alt="" class="check-passsword-icon">
                                 Ao menos 1 letra minúscula
                             </li>
                             <!-- Deve Conter Caractere Especial -->
                             <li class="requirements">
-                                <img src="img/wrong-icon.png" alt="" class="check-passsword-icon">
+                                <img src="img/wrong.svg" alt="" class="check-passsword-icon">
                                 Ao menos 1 caractere especial
                             </li>
                             <!-- Deve Conter Números -->
                             <li class="requirements">
-                                <img src="img/wrong-icon.png" alt="" class="check-passsword-icon">
+                                <img src="img/wrong.svg" alt="" class="check-passsword-icon">
                                 Ao menos 1 número
                             </li>
                             <!-- Deve Conter >= 8 dígitos -->
                             <li class="requirements">
-                                <img src="img/wrong-icon.png" alt="" class="check-passsword-icon">
+                                <img src="img/wrong.svg" alt="" class="check-passsword-icon">
                                 Ao menos 8 digitos
                             </li>
                         </ul>
                     </div>
                 </div>
                 </form>
+                <div class="error-container" id="error-container2">
+                    <error>
+                        <img src="img/info-alert.svg" alt="">
+                        Por favor, preencha todos os campos para prosseguir.
+                    </error>
+                </div>
                 <!-- Container do Botão -->
                 <div id="send2-container">
                     <!-- Enviar -->
@@ -168,19 +221,124 @@
             </div>
         </div>
         </div>
-        <!-- Criar conta: verificar -->
-        <div id="content-3" class="content">
-
-        </div>
+        <!-- Criar conta: verificar email -->
+        
         <!-- Criar conta: digitar código verificação -->
-        <div id="content-4" class="content">
-
+        <div id="content-3" class="content esconder">
+            <div class="back-button-container">
+                <img src="img/back-button.png" alt="" class="back-button">
+            </div>
+            <div class="text-container">
+                <!-- Texto 1 -->
+                <texto1>Verifique seu email</texto1>
+                <!-- Descrição -->
+                <p>Será enviado um email de verificação para o endereço x@gmail.com. Por favor, digite o código presente no email para concluir o cadastro.</p> 
+            </div>
+    
+            <!-- Figura Lupa -->
+            <section id="container-figure">
+                <div id="figure-border">
+                    <div id="figure-content-space">
+                        <div id="figure-design-bar-container">
+                            <div class="figure-design-bar">
+                                <div class="figure-design-retangle">
+                                    <div class="figure-design-circle"></div>
+                                </div>
+                            </div>
+                            <div class="figure-design-bar">
+                                <div class="figure-design-retangle">
+                                    <div class="figure-design-circle"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="handle-container">
+                    <div class="figure-design-retangle">
+                        <div class="figure-design-circle"></div>
+                    </div>
+                </div>
+    
+            </section>
+             <!-- Container do Botão -->
+             <div id="send3-container">
+                <!-- Enviar -->
+                <button class="btn" id="send3">Continuar</button>
+            </div>
         </div>
         <!-- Criar conta: concluído -->
-        <div id="content-5" class="content">
+        <div id="content-4" class="content esconder">
+            <!-- Botão voltar -->
+        <div class="back-button-container" id="back-button-container-4">
+            <img src="img/back-button.png" alt="" class="back-button">
+        </div>
 
+        <div id="titulo-tela-4">
+            <texto1>Digite o código enviado para o seu email</texto1>
+        </div>
+
+        <!-- Digitar código de verificação enviado por email -->
+        <form action="" id="verification-code-form">
+            <input type="text" class="verification-code-input" name="verification-code-char1" maxlength="1">
+            <input type="text" class="verification-code-input" name="verification-code-char2" maxlength="1">
+            <input type="text" class="verification-code-input" name="verification-code-char3" maxlength="1">
+            <input type="text" class="verification-code-input" name="verification-code-char4" maxlength="1">
+        </form>
+
+        <!-- Enviar e Voltar -->
+        <div id="email-enviar-alterar-container">
+            <!-- Botão Enviar Código -->
+            <button class="btn" id="send4">Continuar</button>
+             <!-- Reenviar código -->
+            <p>Reenviar código em (<span id="time-remaining">1:00</span>)</p>
+        </div>
+
+        <!-- Email errado -->
+        <div id="alter-email">
+            <p>Seu email não é <span>teste@gmail.com</span> ? <a href="#">Altere aqui</a>.</p>
+        </div>
         </div>
     </main>
+    <!-- Tela de Cadastro Finalizado -->
+    <div id="content-5" class="content esconder">
+        <div class="column-align">
+            <!-- Título Principal -->
+            <div id="titulo-tela-5">
+                <texto1>Tudo<br>Pronto!</texto1>
+            </div>
+            <!-- Container do Botão -->
+            <div id="send5-container">
+                <!-- Enviar -->
+                <button class="btn" id="send5">Vamos Lá!</button>
+            </div>
+        </div>
+
+        <!-- Emoji Container -->
+        <section id="tela-5-emoji-container">
+            <!-- Emoji Sorrindo -->
+            <div class="emoji-smile-container">
+                <!-- Contorno -->
+                <div class="emoji-smile-border">
+                    <div class="emoji-smile-content-face">
+                        <!-- Olhos -->
+                        <div class="emoji-smile-eyes-container">
+                            <div class="emoji-smile-eye"></div>
+                            <div class="emoji-smile-eye"></div>
+                        </div>
+                        <!-- Boca -->
+                        <div class="emoji-smile-mouth">
+                            <!-- Topo reto da boca -->
+                            <div class="emoji-smile-mouth-row"></div>
+                            <!-- Abertura redonda da boca na parte inferior -->
+                            <div class="emoji-smile-mouth-circle-container">
+                                <div class="emoji-smile-mouth-circle"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
     <script src="script/main.js"></script>
 </body>
 </html>
