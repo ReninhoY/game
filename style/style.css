@@ -15,6 +15,65 @@ p {
     
 }
 
+.error-container {
+    
+}
+
+.password-error-container {
+    display: none;
+}
+
+error {
+    color: #ff4e4e;
+    font-size: 0.8em;
+    gap: 0.5vw;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    z-index: 2;
+}
+
+#error-container-overlay {
+    opacity: 0;
+}
+
+.password-error-container {
+    display: none;
+}
+
+#senhas-invalidas-row {
+    width: 100%;
+    display: flex;
+    gap: 2%;
+    margin-top: -3%;
+}
+
+#senhas-invalidas-row-1 {
+    opacity: 0;
+}
+
+#senhas-invalidas-row-2 {
+    opacity: 0;
+}
+
+#senhas-invalidas-row .error-container-row:first-child {
+    width: 50%;
+}
+
+#senhas-invalidas-row .error-container-row:last-child {
+    width: 50%;
+}
+
+error :nth-of-type(2) {
+    top: 0;
+}
+
+error img {
+    width: 15px;
+}
+
+
+
 texto2 {
     display: inline-block;
     color: #000000;
@@ -61,9 +120,13 @@ texto1 {
 
 #content-container #content-1 .aside-dinamic-form {
     width: 65%;
-    background-color: rgb(255, 255, 255);
-    position: absolute;
     height: 90%;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
     right: 0;
     top: 10%;
     z-index: 1;
@@ -145,10 +208,11 @@ texto1 {
 
 .container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-direction: column;
     width: 100%;
+    height: 90%;
     gap: 4vh;
 }
 
@@ -229,7 +293,11 @@ texto1 {
     font-size: 2vh;
 }
 
-.aside-dinamic-form #form-dadosPessoais #possuiConta {
+#error-container1 {
+    display: none;
+}
+
+.aside-dinamic-form #possuiConta {
     display: none;
 }
 
@@ -268,6 +336,7 @@ texto1 {
 }
 
 #content-2 .container texto1 {
+    margin: 4vh 0;
     text-align: center;
 }
 
@@ -279,23 +348,28 @@ texto1 {
 
 #content-2 #form-dadosPessoais #form-group-password {
     width: 100%;
+    position: relative;
     display: flex;
     flex-direction: row;
     align-items: baseline;
     gap: 2%;
 }
 
-#content-2 #form-dadosPessoais {
-    
+
+/* Form Credenciais */
+
+#texto2 {
+    width: 70%;
 }
 
 .back-button-container {
     margin: 2vw 2vw 0vw 2vw;
-    width: 100%;
+    width: 50%;
     position: absolute;
     top: 5%;
     left: 5%;
 }
+
 
 .back-button {
     cursor: pointer;
@@ -308,8 +382,14 @@ texto1 {
    background-color: aqua !important;
 }
 
+#error-container2 {
+    opacity: 0;
+    margin: 1vh 0;
+}
+
 #send2 {
     width: 50vw;
+    margin-bottom: 5vh;
 }
 
 #requirements-align {
@@ -351,17 +431,8 @@ texto1 {
 
 /* Página de Verificação de Email */
 
-#verify-main-content-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 5vh;
-}
-
-#text-container3 {
+.text-container {
     text-align: center;
-    margin-top: 2vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -370,18 +441,22 @@ texto1 {
     width: 100%;
 }
 
-#text-container3 p {
+.text-container p {
     width: 50%;
 }
 
 #send3 {
     margin: 20vh 0 2vh 0;
+}
+
+#send3, #send4 {
     padding: 2vw 5vw;
+    margin-bottom: 2vw;
 }
 
 #container-figure {
     width: 20vw;
-    height: 20vw;
+    height: 20vw !important;
     background-color: #1f1f1f;
     border-radius: 50%;
     display: flex;
@@ -427,7 +502,7 @@ texto1 {
 .figure-design-retangle {
     width: 0.536vw;
     height: 5.36vw;
-    background-color: #1f1f1f;
+    background-color: #1F1F1F;
     position: relative;
 }
 
@@ -455,7 +530,7 @@ texto1 {
     background-color: chartreuse;
     position: absolute;
     right: 0;
-    bottom: 5vw;
+    bottom: 4vw;
     transform: rotate(-151deg) translateX(-120%);
 }
 
@@ -478,6 +553,206 @@ texto1 {
     transform: translateX(-50%);
 }
 
+#content-3 {
+    position: absolute;
+    z-index: 2;
+    height: 100%;
+    top: 10vh;
+    width: 100%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 2vh;
+}
+
+#email-enviar-alterar-container {
+    text-align: center;
+}
+
+#titulo-tela-4 {
+    width: 100%;
+    text-align: center;
+}
+
+#titulo-tela-4 texto1 {
+    width: 80%;
+}
+
+
+
+#verification-code-form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2%;
+}
+
+.verification-code-input {
+    margin-top: 5%;
+    width: 10%;
+    height: 16vh;
+    border: 0;
+    outline: 0;
+    border-bottom: 2px solid #000;
+    background-color: rgb(252, 252, 252);
+    text-align: center;
+    font-size: 2em;
+}
+
+#alter-email {
+    width: 100%;
+    text-align: left;
+}
+
+#alter-email p {
+    padding-left: 7vw;
+}
+
+/* Tela de Teste */
+
+#content-4 {
+    background-color: #fff;
+    position: absolute;
+    z-index: 3;
+    height: 90%;
+    top: 10vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+    justify-content: center;
+    align-items: center;
+}
+
+#content-5 {
+    background-color: #fff;
+    height: 90%;
+    top: 10vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 8vw;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    
+}
+
+#content-5 texto1 {
+    width: 100%;
+    font-size: 4em;
+}
+
+.emoji-smile-container {
+    width: 100%;
+    height: 29vw;
+    order: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.emoji-smile-border {
+    width: 100%;
+    height: 100%;
+    border: 1.5vw solid #000;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #fff;
+}
+
+.emoji-smile-content-face {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.emoji-smile-eyes-container {
+    width: 62.4%;
+    height: 7.8vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.emoji-smile-eye {
+    width: 3.9vw;
+    height: 3.9vw;
+    background-color: #000;
+    border-radius: 50%;
+}
+
+.emoji-smile-mouth {
+    width: 62.4%;
+    height: 11.7vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.emoji-smile-mouth-row {
+    width: 17vw;
+    height: 1.17vw;
+    background-color: #000;
+}
+
+.emoji-smile-mouth-circle-container {
+    width: 17vw;
+    height: 7.8vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow-y: hidden;
+}
+
+.emoji-smile-mouth-circle {
+    width: 100%;
+    height: 15.6vw;
+    border-radius: 50%;
+    background-color: #000;
+    position: absolute;
+    top: -105%;
+}
+
+.column-align {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.column-align div{
+    width: 32vw;
+    text-align: center;
+}
+
+#send5 {
+    margin: 20vh 0 2vh 0;
+    padding: 2vw 5vw;
+}
+
+#send5-container {
+    width: 100%;
+}
+
+#tela-5-emoji-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+}
 
 
 @keyframes rotateHandle {
@@ -541,6 +816,23 @@ texto1 {
         gap: 9vw;
     }
 
+    .aside-dinamic-form .form-group input:focus ~ label {
+        position: absolute;
+        top: -30%;
+        color: #000000;
+        font-size: 2vh;
+    }
+    
+    .aside-dinamic-form .form-group input:valid ~ label {
+        top: -30%;
+        color: #000000;
+        font-size: 2vh;
+    }
+
+    #error-container1 {
+        margin-bottom: 3%;
+    }
+
 
     .content-div:nth-child(2) .form-group input {
         font-size: 2.5vh;
@@ -552,12 +844,26 @@ texto1 {
         margin: 3% 0;
     }
 
-
-    .content-div:nth-child(2) #form-dadosPessoais #possuiConta {
+    .password-error-container {
         display: block;
-        position: absolute;
-        left: 0vw;
-        top: 110%;
+        opacity: 0;
+    }
+    
+    password-error-container {
+        display: block;
+    }
+
+    #senhas-invalidas-row .error-container-row:first-child {
+        display: none;
+    }
+    
+    #senhas-invalidas-row .error-container-row:last-child {
+        display: none;
+    }
+
+    .content-div:nth-child(2) #possuiConta {
+        display: block;
+        padding-bottom: 5vh;
     }
 
     .content-div :nth-child(2) span, #card-container {
@@ -567,15 +873,38 @@ texto1 {
     #send3 {
         margin-top: 12vh;
     }
+
+    #content-4 texto1 {
+        width: 80%;
+    }
 }
 
 @media screen and (max-width: 480px){ 
     texto1 {
         font-size: 2em;
     }
+    
 
     .btn {
         padding: 2.5vw 8vw !important;
+    }
+
+    .back-button-container {
+        position: relative;
+        width: 95%;
+        margin-top: -3vh;
+        margin-left: -8vw;
+    }
+
+    #content-3 .back-button-container {
+        margin-top: -13vh !important;
+
+    }
+    
+
+    .back-button {
+        min-width: 0;
+        width: 10%;
     }
 
     #content-2 #form-dadosPessoais {
@@ -594,9 +923,19 @@ texto1 {
         width: 75%;
     }
 
+    .back-button-container {
+        margin-left: -4vw;
+    }
+
+    #content-3 .back-button-container {
+        margin-top: -3vh;
+
+    }
+
     #container-figure {
         width: 32vw;
-        height: 32vw;
+        height: 32vw !important;
+        background-color: red;
     }
     
     #figure-border {
@@ -645,5 +984,58 @@ texto1 {
         width: 3.2vw;
         height: 3.2vw;
     }
+
+    #content-5 {
+        background-color: #fff;
+        height: 90%;
+        top: 10vh;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 5vh;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .column-align {
+        height: 100%;
+        gap: 30vh;
+    }
+
+    #titulo-tela-5 {
+        width: 100%;
+        text-align: center;
+    }
     
+    #titulo-tela-5 texto1 {
+        width: 100%;
+        
+    }
+   
+    #tela-5-emoji-container {
+        position: absolute;
+        top: 64%;
+        transform: translateY(-50%);
+    }
+
+    .emoji-smile-mouth-row {
+        margin-bottom: -0.2vh;
+    }
+    
+
+}
+
+@media all and (max-width: 400px) {
+
+
+
+    #tela-5-emoji-container {
+        transform: scale(2);
+        top: 52%;
+    }
+
+    #titulo-tela-5 texto1 {
+        font-size: 2.5em;
+    }
+   
 }
