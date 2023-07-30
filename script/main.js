@@ -126,42 +126,42 @@ function checkChange(senha) {
     
     // Verificar se tem 8 dígitos
     if (requisitosSenha8DigitosCheck.test(senha) == true) {
-        requisitosSenha8Digitos.src = "../img/right.svg"
+        requisitosSenha8Digitos.src = "./img/right.svg"
     }
     else {
-        requisitosSenha8Digitos.src = "../img/wrong.svg"
+        requisitosSenha8Digitos.src = "./img/wrong.svg"
     }
 
     // Verificar se tem letra maiúscula
     if (requisitosSenhaMaiusculaCheck.test(senha) == true) {
-        requisitosSenhaMaiuscula.src = "../img/right.svg"
+        requisitosSenhaMaiuscula.src = "./img/right.svg"
     }
     else {
-        requisitosSenhaMaiuscula.src = "../img/wrong.svg"
+        requisitosSenhaMaiuscula.src = "./img/wrong.svg"
     }
 
     // Verificar se tem letra minúscula
     if (requisitosSenhaMinusculaCheck.test(senha) == true) {
-        requisitosSenhaMinuscula.src = "../img/right.svg"
+        requisitosSenhaMinuscula.src = "./img/right.svg"
     }
     else {
-        requisitosSenhaMinuscula.src = "../img/wrong.svg"
+        requisitosSenhaMinuscula.src = "./img/wrong.svg"
     }
 
     // Verificar se tem caractere especial
     if (requisitosSenhaCaractereEspecialCheck.test(senha) == true) {
-        requisitosSenhaCaractereEspecial.src = "../img/right.svg"
+        requisitosSenhaCaractereEspecial.src = "./img/right.svg"
     }
     else {
-        requisitosSenhaCaractereEspecial.src = "../img/wrong.svg"
+        requisitosSenhaCaractereEspecial.src = "./img/wrong.svg"
     }
 
     // Verificar se tem número
     if (requisitosSenhaNumeroCheck.test(senha) == true) {
-        requisitosSenhaNumero.src = "../img/right.svg"
+        requisitosSenhaNumero.src = "./img/right.svg"
     }
     else {
-        requisitosSenhaNumero.src = "../img/wrong.svg"
+        requisitosSenhaNumero.src = "./img/wrong.svg"
     }
 
     // Definir se os requisitos estão sendo cumpridos
