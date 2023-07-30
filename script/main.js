@@ -10,6 +10,7 @@ var nome = document.querySelectorAll('.input-send1')[0]
 var sobrenome = document.querySelectorAll('.input-send1')[1]
 var cpf = document.querySelectorAll('.input-send1')[2]
 var dataNascimento = document.querySelectorAll('.input-send1')[3]
+let email = document.querySelectorAll(".input-send2 ")[0]
 let senha = document.querySelectorAll(".input-send2 ")[1]
 let confirmarSenha = document.querySelectorAll(".input-send2 ")[2]
 let cardContainer = document.querySelectorAll(".content-div")[0]
@@ -37,22 +38,30 @@ let requisitosSenhaMinuscula = document.querySelectorAll('.check-passsword-icon'
 let requisitosSenhaCaractereEspecial = document.querySelectorAll('.check-passsword-icon')[2]
 let requisitosSenhaNumero = document.querySelectorAll('.check-passsword-icon')[3]
 let requisitosSenha8Digitos = document.querySelectorAll('.check-passsword-icon')[4]
+let emailEstado = false
 let requisitosEstado = false
 let senhasIguais = false
 let form1Invalido = document.querySelector("#error-container1")
+let emailInvalido = document.querySelector("#error-container2")
 let senhaInvalidaLinhaItem1 = document.querySelector("#senhas-invalidas-row-1")
 let senhaInvalidaLinhaItem2 = document.querySelector("#senhas-invalidas-row-2")
 let senhaInvalidaColunaItem1 = document.querySelector("#senhas-invalidas-column-1")
 let senhaInvalidaColunaItem2 = document.querySelector("#senhas-invalidas-column-2")
 
-/*
-Ao menos 1 letra maiúscula
-Ao menos 1 letra minúscula
-Ao menos 1 caractere especial
-Ao menos 1 número
-Ao menos 8 digitos
-
-*/
+let btnEnable = false
+let timeHTML = document.querySelector("#time-remaining")
+let timeValue = 60
+function enableButton() {
+    let interval = setInterval((index) => {
+        timeValue--
+        timeHTML.innerText = `0:${timeValue}`
+        if (i == 0) {
+            btnEnable = true
+            clearInterval(interval)
+            console.log ("acabou")
+        }
+    }, 1000);
+}
 
 
 let date = new Date
@@ -333,16 +342,15 @@ labels.forEach((a,index)=>{
 
 
 send1.addEventListener('click',()=>{
-    //if ((nome.value != "") && (sobrenome.value != "") && (cpf.value.length == 14) && (dataNascimento.value.length == 10)) {
+    if ((nome.value != "") && (sobrenome.value != "") && (cpf.value.length == 14) && (dataNascimento.value.length == 10)) {
         content1.classList.add("esconder")
         content2.classList.remove("esconder")
         cardContainer.classList.add("esconder")
-    //    form1Invalido.style.display = "none"
-    //}
-    //else {
+        form1Invalido.style.display = "none"
+    }
+    else {
         form1Invalido.style.display = "block"
-    //}
-    
+    }
 })
 
 backButton1.addEventListener('click',()=>{
@@ -425,12 +433,21 @@ send2.addEventListener('click',()=>{
         }
     }
 
-    if (requisitosEstado == true && senhasIguais == true) {
+    if (email.value) {
+        emailEstado = true
+        emailInvalido.style.opacity = "0"
+    }
+    else {
+        emailInvalido.style.opacity = "1"
+    }
+
+    if (requisitosEstado == true && senhasIguais == true && emailEstado == true) {
         console.log ("foi")
         content2.classList.add("esconder")
         content3.classList.remove("esconder")
         senhaInvalidaLinhaItem1.style.display = "none"
         senhaInvalidaColunaItem1.style.display = "none"
+        emailInvalido.style.opacity = 0
     }
     else if (requisitosEstado == false && senhasIguais == false) {
         if (width > 980) { // Se o display estiver alinhado na horizontal, usar o aviso em linha 
@@ -474,6 +491,7 @@ backButton2.addEventListener('click',()=>{
 send3.addEventListener('click',()=>{
     content3.classList.add("esconder")
     content4.classList.remove("esconder")
+    enableButton()
 })
 
 backButton3.addEventListener('click',()=>{
@@ -484,4 +502,5 @@ backButton3.addEventListener('click',()=>{
 send4.addEventListener('click', ()=>{
     content4.classList.add("esconder")
     content5.classList.remove("esconder")
+
 })
