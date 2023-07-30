@@ -419,10 +419,11 @@ texto1 {
     display: flex;
     gap: 1vw;
     align-items: center;
+    width: 100%;
 }
 
 .check-passsword-icon {
-    width: 6%;
+    width: 1.6vw;
 }
 
 .input-send2 {
