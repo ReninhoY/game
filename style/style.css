@@ -801,6 +801,7 @@ texto1 {
     #content-container #content-1 .content-div:nth-child(2) .container #termos {
         width: 100%;
         text-align: center;
+        margin-bottom: 2vh;
     }
     
     #content-container #content-1 .content-div, #content-2 {
