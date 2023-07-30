@@ -424,6 +424,7 @@ texto1 {
 
 .check-passsword-icon {
     width: 1.6vw;
+    min-width: 14px;
 }
 
 .input-send2 {
@@ -921,6 +922,20 @@ texto1 {
 
 @media all and (max-width: 700px) {
 
+    #texto2 texto1 {
+        width: 100%;
+        font-size: 1.7em;
+    }
+
+    #error-img-1 {
+        margin-left: 1vw;
+        margin-right: 10px;
+    }
+
+    .check-passsword-icon {
+        margin-right: 10px;
+    }
+
     #text-container3 p {
         width: 75%;
     }
@@ -937,7 +952,7 @@ texto1 {
     #container-figure {
         width: 32vw;
         height: 32vw !important;
-        background-color: red;
+        background-color: #1F1F1F;
     }
     
     #figure-border {
