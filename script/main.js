@@ -78,6 +78,43 @@ const caracteresEspeciais = [
     "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~", "¨"
 ]
       
+const caracteresEspeciaisKeyCode = [
+    33, // Keycode for '!'
+    34, // Keycode for '"'
+    35, // Keycode for '#'
+    36, // Keycode for '$'
+    37, // Keycode for '%'
+    38, // Keycode for '&'
+    39, // Keycode for "'"
+    40, // Keycode for '('
+    41, // Keycode for ')'
+    42, // Keycode for '*'
+    43, // Keycode for '+'
+    44, // Keycode for ','
+    45, // Keycode for '-'
+    46, // Keycode for '.'
+    47, // Keycode for '/'
+    58, // Keycode for ':'
+    59, // Keycode for ';'
+    60, // Keycode for '<'
+    61, // Keycode for '='
+    62, // Keycode for '>'
+    63, // Keycode for '?'
+    64, // Keycode for '@'
+    91, // Keycode for '['
+    92, // Keycode for '\'
+    93, // Keycode for ']'
+    94, // Keycode for '^'
+    95, // Keycode for '_'
+    96, // Keycode for '`'
+    123, // Keycode for '{'
+    124, // Keycode for '|'
+    125, // Keycode for '}'
+    126, // Keycode for '~'
+    168, // Keycode for '¨'
+];
+
+
 //==============================================================
 
 // Funções
@@ -86,20 +123,20 @@ function erroInputInvalido(erro) {
 }
 
 function justNumbers(evento, tecla) {   
-    if ((tecla != '0' && tecla != '1' && tecla != '2' && tecla != '3' && tecla != '4' && tecla != '5' && tecla != '6' && tecla != '7' && tecla != '8' && tecla != '9' && evento.keyCode != 8) || (tecla == " ")){
+    if ((tecla != 48 && tecla != 49 && tecla != 50 && tecla != 51 && tecla != 52 && tecla != 53 && tecla != 54 && tecla != 55 && tecla != 56 && tecla != 57 && evento.keyCode != 8) || (tecla == 32)){
         evento.preventDefault()
     }
 }
 
 function justLetters(evento, tecla) {   
-    if (tecla == '0' || tecla == '1' || tecla == '2' || tecla == '3' || tecla == '4' || tecla == '5' || tecla == '6' || tecla == '7' || tecla == '8' || tecla == '9' ){
+    if (tecla == 48 || tecla == 49 || tecla == 50 || tecla == 51 || tecla == 52 || tecla == 53 || tecla == 54 || tecla == 55 || tecla == 56 || tecla == 57 ){
         evento.preventDefault()
     }
 }
 
 function éCaracterEspecial(evento, tecla) {
     caracteresEspeciais.forEach((a,index)=>{
-        if (tecla == caracteresEspeciais[index]) {
+        if (tecla == caracteresEspeciaisKeyCode[index]) {
             evento.preventDefault()
         }
     })
@@ -107,61 +144,65 @@ function éCaracterEspecial(evento, tecla) {
 
 function éCaracterEspecialColado(evento) {
     let valorCopiado = evento.clipboardData.getData("text/plain")
-    caracteresEspeciais.forEach((a,index)=>{
-        if (valorCopiado == caracteresEspeciais[index]) {
-            evento.preventDefault()
-        }
+    caracteresEspeciais.forEach((a,indexCaractere)=>{
+        Array.from(valorCopiado).forEach((a,indexValorCopiado)=>{
+            if (valorCopiado[indexValorCopiado] == caracteresEspeciais[indexCaractere]) {
+                evento.preventDefault()
+            }
+        })
     })
 }
 
 function éLetraColada(evento) {
-    let tecla = evento.key
     let valorCopiado = evento.clipboardData.getData('text/plain')
-    if ((tecla != '0' && tecla != '1' && tecla != '2' && tecla != '3' && tecla != '4' && tecla != '5' && tecla != '6' && tecla != '7' && tecla != '8' && tecla != '9' && tecla != "backspace") || (tecla == " ")){
-        evento.preventDefault()        
-    }
+        Array.from(valorCopiado).forEach((a,indexValorCopiado)=>{
+            let caractere = valorCopiado[indexValorCopiado]
+            if ((caractere != '0' && caractere != '1' && caractere != '2' && caractere != '3' && caractere != '4' && caractere != '5' && caractere != '6' && caractere != '7' && caractere != '8' && caractere != '9') || (caractere == " ")) {
+                evento.preventDefault()        
+            }    
+        })
 }
 
 function checkChange(senha) {
     
     // Verificar se tem 8 dígitos
     if (requisitosSenha8DigitosCheck.test(senha) == true) {
-        requisitosSenha8Digitos.src = "./img/right.svg"
+        requisitosSenha8Digitos.src = "../img/right.svg"
     }
     else {
-        requisitosSenha8Digitos.src = "./img/wrong.svg"
+        requisitosSenha8Digitos.src = "../img/wrong.svg"
     }
 
     // Verificar se tem letra maiúscula
     if (requisitosSenhaMaiusculaCheck.test(senha) == true) {
-        requisitosSenhaMaiuscula.src = "./img/right.svg"
+        requisitosSenhaMaiuscula.src = "../img/right.svg"
     }
     else {
-        requisitosSenhaMaiuscula.src = "./img/wrong.svg"
+        requisitosSenhaMaiuscula.src = "../img/wrong.svg"
     }
 
     // Verificar se tem letra minúscula
     if (requisitosSenhaMinusculaCheck.test(senha) == true) {
-        requisitosSenhaMinuscula.src = "./img/right.svg"
+        requisitosSenhaMinuscula.src = "../img/right.svg"
     }
     else {
-        requisitosSenhaMinuscula.src = "./img/wrong.svg"
+        requisitosSenhaMinuscula.src = "../img/wrong.svg"
     }
 
     // Verificar se tem caractere especial
     if (requisitosSenhaCaractereEspecialCheck.test(senha) == true) {
-        requisitosSenhaCaractereEspecial.src = "./img/right.svg"
+        requisitosSenhaCaractereEspecial.src = "../img/right.svg"
     }
     else {
-        requisitosSenhaCaractereEspecial.src = "./img/wrong.svg"
+        requisitosSenhaCaractereEspecial.src = "../img/wrong.svg"
     }
 
     // Verificar se tem número
     if (requisitosSenhaNumeroCheck.test(senha) == true) {
-        requisitosSenhaNumero.src = "./img/right.svg"
+        requisitosSenhaNumero.src = "../img/right.svg"
     }
     else {
-        requisitosSenhaNumero.src = "./img/wrong.svg"
+        requisitosSenhaNumero.src = "../img/wrong.svg"
     }
 
     // Definir se os requisitos estão sendo cumpridos
@@ -174,9 +215,9 @@ function checkChange(senha) {
 
 // Nome
 nome.addEventListener('keydown',(evento)=>{
-    éCaracterEspecial(evento,evento.key)
-    justLetters(evento,evento.key)
-    if (evento.key == " ") {
+    éCaracterEspecial(evento,evento.keyCode)
+    justLetters(evento,evento.keyCode)
+    if (evento.keyCode == 32) {
         evento.preventDefault()
     }
 })
@@ -186,8 +227,8 @@ nome.addEventListener('paste', (evento)=>{
 
 // Sobrenome
 sobrenome.addEventListener('keydown',(evento)=>{
-    éCaracterEspecial(evento,evento.key)
-    justLetters(evento,evento.key)
+    éCaracterEspecial(evento,evento.keyCode)
+    justLetters(evento,evento.keyCode)
 })
 sobrenome.addEventListener('paste',(evento)=>{
     éCaracterEspecialColado(evento)
@@ -195,7 +236,7 @@ sobrenome.addEventListener('paste',(evento)=>{
 
 // CPF - Máscara
 cpf.addEventListener('keydown',(evento)=>{
-    justNumbers(evento,evento.key)
+    justNumbers(evento,evento.keyCode)
     let cpfQuantidade = cpf.value.length
     if (evento.keyCode != 8) {
         if (cpfQuantidade==3 || cpfQuantidade==7)  {
@@ -226,7 +267,7 @@ dataNascimento.addEventListener('keydown',(evento)=>{
 
 // Data de Nascimento - Ajustar Data Digitada
 dataNascimento.addEventListener('keydown',(evento)=>{
-    justNumbers(evento,evento.key)
+    justNumbers(evento,evento.keyCode)
     var partes = dataNascimento.value.split("/")
     var dia = partes[0]
     var mes = partes[1]
@@ -278,11 +319,6 @@ dataNascimento.addEventListener('keydown',(evento)=>{
         }
         else if (ano>=dataAtual.ano && mes<=dataAtual.mes){
             ano = dataAtual.ano
-            dataNascimento.value = `${dia}/${mes}/${ano}`
-        }
-
-        if (ano<1900) {
-            ano = 1900
             dataNascimento.value = `${dia}/${mes}/${ano}`
         }
 
@@ -362,7 +398,6 @@ backButton1.addEventListener('click',()=>{
 // Eventos para o 2º Formulário: Credenciais
 
 senha.addEventListener ('keyup',(evento)=>{
-    let tecla = evento.key
     console.log (""+senha.value)
     checkChange(senha.value)
 })
